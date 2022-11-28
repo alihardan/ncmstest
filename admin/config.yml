@@ -2,7 +2,6 @@ backend:
   name: github
   repo: "alihardan/ncmstest"
   branch: main
-  site_domain: "bucolic-phoenix-4f5552.netlify.app"
 
 publish_mode: editorial_workflow
 media_folder: "images/uploads" # Media files will be stored in the repo under images/uploads
