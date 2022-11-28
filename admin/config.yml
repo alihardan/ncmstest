@@ -24,6 +24,7 @@ collections:
         name: "tags"
         widget: "list"
         default: ["news"]
+        allow_add: true
       - label: "Profile"
         name: "profile"
         widget: "object"
