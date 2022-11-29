@@ -1,52 +1,121 @@
 backend:
-  name: github
-  repo: "alihardan/ncmstest"
-  branch: main
+  # name: github
+  name: git-gateway
+  # repo: "alihardan/ncmstest"
+  # branch: main
+
+local_backend: true
 
 publish_mode: editorial_workflow
 media_folder: "images/uploads" # Media files will be stored in the repo under images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
+i18n:
+  structure: single_file
+  locales: [en, fa]
+  default_locale: en
+
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
+  - name: "companies"
+    i18n: true
+    label: "Companies"
     extension: json
     format: json
-    folder: "_posts/blog" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
-      - { label: "Title", name: "title", widget: "string" }
+    folder: "_companies"
+    create: true
+    slug: "{{fields.title[0]}}"
+    fields:
+      - {
+          label: "Title",
+          name: "title",
+          i18n: true,
+          widget: "list",
+          # summary: "{{fields.title}}",
+          field: { label: "title", name: "title", widget: "string" },
+        }
+      - {
+          label: "Profile",
+          name: "profile",
+          i18n: true,
+          widget: "list",
+          summary: "{{fields.title}}",
+          fields:
+            [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Value", name: "value", widget: "string" },
+            ],
+        }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
-      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "blah", name: "blah", widget: "markdown" }
-      - label: "Gallery"
-        name: "galleryImages"
-        widget: "list"
-        fields:
-          - { label: "Source", name: "src", widget: "string" }
-          - { label: "Alt Text", name: "alt", widget: "string" }
-      - label: "Profile"
-        name: "profile"
-        widget: "object"
-        summary: '{{fields.name}}: {{fields.birthdate}}'
-        fields:
-          - {label: "Public", name: "public", widget: "boolean", default: true}
-          - {label: "Name", name: "name", widget: "string"}
-          - label: "Birthdate"
-            name: "birthdate"
-            widget: "date"
-            default: ""
-            format: "MM/DD/YYYY"
-          - label: "Address"
-            name: "address"
-            widget: "object"
-            collapsed: true
-            fields: 
-              - {label: "Street Address", name: "street", widget: "string"}
-              - {label: "City", name: "city", widget: "string"}
-              - {label: "Postal Code", name: "post-code", widget: "string"}
-    
+      - { label: "Logo", name: "logo", widget: "image" }
+      # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+      - { label: "Body", i18n: true, name: "body", widget: "markdown" }
+  - name: "games"
+    i18n: true
+    label: "Games"
+    extension: json
+    format: json
+    folder: "_games"
+    create: true
+    slug: "{{fields.title[0]}}-{{fields.publisher[0]}}"
+    fields:
+      - {
+          label: "Title",
+          name: "title",
+          i18n: true,
+          widget: "list",
+          # summary: "{{fields.title}}",
+          field: { label: "title", name: "title", widget: "string" },
+        }
+      - {
+          label: "Profile",
+          name: "profile",
+          # i18n: true,
+          widget: "relation",
+          collection: "companies",
+          # value_field: "title[0]",
+          value_field: "{{slug}}",
+          search_fields: ["title[0]"],
+          display_fields: ["title[0]"],
+          fields:
+            [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Value", name: "value", widget: "string" },
+            ],
+        }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Logo", name: "logo", widget: "image" }
+      # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+      - { label: "Body", i18n: true, name: "body", widget: "markdown" }
+
+      # - { label: "blah", name: "blah", widget: "markdown" }
+      # - label: "Gallery"
+      #   name: "galleryImages"
+      #   widget: "list"
+      #   fields:
+      #     - { label: "Source", name: "src", widget: "string" }
+      #     - { label: "Alt Text", name: "alt", widget: "string" }
+      # - label: "Profile"
+      #   name: "profile"
+      #   widget: "object"
+      #   summary: "{{fields.name}}: {{fields.birthdate}}"
+      #   fields:
+      #     - {
+      #         label: "Public",
+      #         name: "public",
+      #         widget: "boolean",
+      #         default: true,
+      #       }
+      #     - { label: "Name", name: "name", widget: "string" }
+      #     - label: "Birthdate"
+      #       name: "birthdate"
+      #       widget: "date"
+      #       default: ""
+      #       format: "MM/DD/YYYY"
+      #     - label: "Address"
+      #       name: "address"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Street Address", name: "street", widget: "string" }
+      #         - { label: "City", name: "city", widget: "string" }
+      #         - { label: "Postal Code", name: "post-code", widget: "string" }
