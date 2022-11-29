@@ -20,11 +20,12 @@ collections:
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
       - { label: "Body", name: "body", widget: "markdown" }
-      - label: "Tags"
-        name: "tags"
+      - label: "Gallery"
+        name: "galleryImages"
         widget: "list"
-        default: ["news", "wow"]
-        field: {label: Image, name: image, widget: image}
+        fields:
+          - { label: "Source", name: "src", widget: "string" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
       - label: "Profile"
         name: "profile"
         widget: "object"
