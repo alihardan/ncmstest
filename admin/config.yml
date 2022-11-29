@@ -23,8 +23,8 @@ collections:
       - label: "Tags"
         name: "tags"
         widget: "list"
-        default: ["news"]
-        allow_add: true
+        default: ["news", "wow"]
+        allow_add: false
       - label: "Profile"
         name: "profile"
         widget: "object"
