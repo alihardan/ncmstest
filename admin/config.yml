@@ -24,7 +24,7 @@ collections:
         name: "tags"
         widget: "list"
         default: ["news", "wow"]
-        allow_add: false
+        field: {label: Image, name: image, widget: image}
       - label: "Profile"
         name: "profile"
         widget: "object"
