@@ -87,8 +87,14 @@ collections:
     format: json
     folder: "_games"
     create: true
-    slug: "{{fields.title[0]}}-{{fields.publisher[0]}}"
+    slug: "{{fields.title[0]}}-{{fields.publishers[0]}}"
     fields:
+      - {
+          label: "در حال فروش",
+          name: "selling",
+          widget: "boolean",
+          default: false,
+        }
       - {
           label: "Photos",
           name: "photos",
@@ -194,13 +200,26 @@ collections:
           required: false,
         }
 
-      - label: "Code"
-        name: "code"
-        default_language: "json"
-        allow_language_selection: false
-        output_code_only: true
-        widget: "code"
-
+      - {
+          label: "tgfiles",
+          name: "tgfiles",
+          # default: [],
+          # i18n: true,
+          widget: "list",
+          fields:
+            [
+              { name: "file_name", widget: "string" },
+              { name: "file_id", widget: "string" },
+              { name: "file_unique_id", widget: "string" },
+              { name: "file_size", widget: "number" },
+              {
+                name: "type",
+                widget: "select",
+                options: ["game", "manual", "extra", "patch", "serial"],
+              },
+            ],
+        }
+      - { label: "files", name: "files", widget: "hidden", default: [] }
       - {
           label: "Contributors",
           name: "contributors",
@@ -226,6 +245,7 @@ collections:
               },
             ],
         }
+      - { hint: "دست نزنید", name: "ia_id", widget: "string" }
 
       # - { label: "blah", name: "blah", widget: "markdown" }
       # - label: "Gallery"
