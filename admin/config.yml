@@ -59,16 +59,34 @@ collections:
     slug: "{{fields.title[0]}}-{{fields.publisher[0]}}"
     fields:
       - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          choose_url: false,
+          allow_multiple: true,
+          # default: "/uploads/chocolate-dogecoin.jpg",
+          media_folder: "games",
+          media_library: { config: { multiple: true } },
+        }
+
+      - {
+          label: "Gallery",
+          name: "galleryImages",
+          widget: "list",
+          summary: "{{fields.image}}",
+          field: { label: Image, name: image, widget: image },
+        }
+      - {
           label: "Title",
           name: "title",
           i18n: true,
           widget: "list",
-          # summary: "{{fields.title}}",
           field: { label: "title", name: "title", widget: "string" },
         }
       - {
-          label: "Profile",
-          name: "profile",
+          label: "Producers",
+          name: "producers",
+          multiple: true,
           # i18n: true,
           widget: "relation",
           collection: "companies",
@@ -76,14 +94,36 @@ collections:
           value_field: "{{slug}}",
           search_fields: ["title[0]"],
           display_fields: ["title[0]"],
-          fields:
-            [
-              { label: "Title", name: "title", widget: "string" },
-              { label: "Value", name: "value", widget: "string" },
-            ],
         }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Logo", name: "logo", widget: "image" }
+      - {
+          label: "Publishers",
+          name: "publishers",
+          multiple: true,
+          # i18n: true,
+          widget: "relation",
+          collection: "companies",
+          # value_field: "title[0]",
+          value_field: "{{slug}}",
+          search_fields: ["title[0]"],
+          display_fields: ["title[0]"],
+        }
+      - {
+          label: "Relase Dates",
+          multiple: false,
+          minimize_collapsed: false,
+          default: [],
+          hint: "اگه این قسمت رو خالی بذارید، ربات موقع آپلود ایمیج پُر می‌کنه.",
+          name: "release_dates",
+          widget: "list",
+          field:
+            {
+              label: "Relase Date",
+              time_format: false,
+              name: "date",
+              widget: "date",
+            },
+        }
+      - { label: "Publish Date", name: "publish_date", widget: "datetime" }
       # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
       - { label: "Body", i18n: true, name: "body", widget: "markdown" }
 
