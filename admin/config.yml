@@ -16,6 +16,37 @@ i18n:
   default_locale: en
 
 collections:
+  - name: "users"
+    label: "Users"
+    extension: json
+    format: json
+    folder: "_users"
+    create: true
+    identifier_field: "username"
+    fields:
+      - { label: "Username", name: "username", widget: "string" }
+      - {
+          label: "Display name",
+          name: "display_name",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Telegram",
+          name: "telegram",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - {
+          label: "Contributes",
+          name: "contributes",
+          widget: "list",
+          summary: "{{fields.title}}",
+          required: false,
+          field: { label: "Contribute", name: "contribute", widget: "string" },
+        }
   - name: "companies"
     i18n: true
     label: "Companies"
@@ -59,22 +90,41 @@ collections:
     slug: "{{fields.title[0]}}-{{fields.publisher[0]}}"
     fields:
       - {
-          label: "Featured Image",
-          name: "thumbnail",
-          widget: "image",
-          choose_url: false,
-          allow_multiple: true,
-          # default: "/uploads/chocolate-dogecoin.jpg",
-          media_folder: "games",
-          media_library: { config: { multiple: true } },
-        }
-
-      - {
-          label: "Gallery",
-          name: "galleryImages",
+          label: "Photos",
+          name: "photos",
           widget: "list",
           summary: "{{fields.image}}",
-          field: { label: Image, name: image, widget: image },
+          fields:
+            [
+              {
+                label: Title,
+                name: title,
+                widget: select,
+                options:
+                  [
+                    "Front Cover",
+                    "Back Cover",
+                    "Media: Disc",
+                    "Manual: Front",
+                    "Manual: Back",
+                    "Case: Front",
+                    "Case: Back",
+                    "Screenshot: Autorun",
+                    "Screenshot: Setup",
+                    "Screenshot",
+                    "Extras: Poster",
+                    "Extras",
+                  ],
+              },
+              {
+                label: Image,
+                media_folder: "/images/games",
+                name: image,
+                choose_url: false,
+                allow_multiple: false,
+                widget: image,
+              },
+            ],
         }
       - {
           label: "Title",
@@ -115,6 +165,7 @@ collections:
           hint: "اگه این قسمت رو خالی بذارید، ربات موقع آپلود ایمیج پُر می‌کنه.",
           name: "release_dates",
           widget: "list",
+          required: false,
           field:
             {
               label: "Relase Date",
@@ -123,9 +174,58 @@ collections:
               widget: "date",
             },
         }
+      - {
+          label: "Prices",
+          name: "prices",
+          # default: [""],
+          # i18n: true,
+          required: false,
+          hint: "به ریال",
+          widget: "list",
+          field: { label: "Price", name: "price", widget: "number" },
+        }
       - { label: "Publish Date", name: "publish_date", widget: "datetime" }
       # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      - { label: "Body", i18n: true, name: "body", widget: "markdown" }
+      - {
+          label: "Body",
+          i18n: true,
+          name: "body",
+          widget: "markdown",
+          required: false,
+        }
+
+      - label: "Code"
+        name: "code"
+        default_language: "json"
+        allow_language_selection: false
+        output_code_only: true
+        widget: "code"
+
+      - {
+          label: "Contributors",
+          name: "contributors",
+          # default: [],
+          # i18n: true,
+          widget: "list",
+          fields: [
+              {
+                name: "username",
+                widget: "relation",
+                collection: "users",
+                value_field: "username",
+                # value_field: "{{slug}}",
+                search_fields: ["username"],
+                # display_fields: "username",
+              },
+              {
+                label: "Contribute",
+                name: "contribute",
+                widget: "select",
+                multiple: true,
+                options: ["game", "cover", "manual", "engineering", "details"],
+              },
+            ],
+        }
 
       # - { label: "blah", name: "blah", widget: "markdown" }
       # - label: "Gallery"

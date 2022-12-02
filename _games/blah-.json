@@ -1,0 +1,25 @@
+{
+  "en": {
+    "release_dates": [],
+    "publish_date": "2022-12-02T10:51:03.330Z",
+    "photos": [
+      {
+        "image": "games/clive-barker-s-undying-cover-1.jpg",
+        "title": "Back Cover"
+      }
+    ],
+    "title": [
+      "Blah"
+    ],
+    "producers": [
+      "novinpendar"
+    ],
+    "publishers": [
+      "novinpendar"
+    ],
+    "body": "hey"
+  },
+  "fa": {
+    "publish_date": "2022-12-02T10:51:03.431Z"
+  }
+}
