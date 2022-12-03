@@ -1,0 +1,67 @@
+{
+  "en": {
+    "platforms": [
+      "Windows"
+    ],
+    "released_on": [
+      {
+        "count": 3,
+        "type": "cd"
+      }
+    ],
+    "photos": [
+      {
+        "title": "Front Cover",
+        "image": "/images/games/420px-archlinux-vert-dark.svg.png"
+      }
+    ],
+    "games": [
+      {
+        "title": [
+          "wolf"
+        ],
+        "title_fa": [
+          "ملف"
+        ],
+        "type": "dubbed"
+      }
+    ],
+    "producers": [
+      "novinpendar"
+    ],
+    "tgfiles": [
+      {
+        "file_name": "a",
+        "file_id": "a",
+        "file_unique_id": "a",
+        "file_size": 2,
+        "type": "game"
+      }
+    ],
+    "release_dates": [],
+    "selling": true,
+    "publishers": [
+      "novinpendar"
+    ],
+    "files": [],
+    "contributors": [
+      {
+        "username": "muhammad",
+        "contribute": [
+          "details"
+        ]
+      }
+    ],
+    "links": [
+      {
+        "url": "a",
+        "title": "a"
+      }
+    ],
+    "publish_date": "2022-12-03T01:40:00.536Z"
+  },
+  "fa": {
+    "publish_date": "2022-12-03T01:40:00.597Z",
+    "selling": true
+  }
+}
