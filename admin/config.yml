@@ -1,8 +1,8 @@
 backend:
-  # name: github
-  name: git-gateway
-  # repo: "alihardan/ncmstest"
-  # branch: main
+  name: github
+  # name: git-gateway
+  repo: "alihardan/ncmstest"
+  branch: main
 
 local_backend: true
 
@@ -87,7 +87,7 @@ collections:
     format: json
     folder: "_games"
     create: true
-    slug: "{{fields.title[0]}}-{{fields.publishers[0]}}"
+    slug: "{{fields.games[0].title[0]}}-{{fields.publishers[0]}}"
     fields:
       - {
           label: "در حال فروش",
@@ -96,9 +96,73 @@ collections:
           default: false,
         }
       - {
+          label: "Games",
+          name: "games",
+          widget: "list",
+          max: 20,
+          min: 1,
+          fields:
+            [
+              {
+                label: Title,
+                name: title,
+                widget: list,
+                field: { label: "title", name: "title", widget: "string" },
+              },
+              {
+                label: عنوان فارسی,
+                name: title_fa,
+                widget: list,
+                field: { label: "title", name: "title", widget: "string" },
+              },
+              {
+                label: Type,
+                name: type,
+                widget: select,
+                options: ["dubbed", "modified", "iranian", "translated-texts"],
+              },
+            ],
+        }
+      - {
+          label: "Collection Title",
+          name: "collection_title",
+          i18n: true,
+          widget: "string",
+          hint: "اگر این یک مجموعه از چند بازی نیست، این قسمت رو خالی بذارید.",
+          required: false,
+          # field: { label: "title", name: "title", widget: "string" },
+        }
+      - {
+          label: "نواقص",
+          name: "defects",
+          i18n: true,
+          widget: "list",
+          required: false,
+          hint: "هر جمله‌ی نقص باید شامل یک جمله‌ی خبری و یک جمله‌ی سؤالی باشد. مثلاً: «ایمیج دیسک اول معیوب است. آن را دارید؟»",
+          field: { name: "defect", widget: "string" },
+        }
+      - {
+          label: "Released on",
+          name: "released_on",
+          widget: "list",
+          max: 60,
+          min: 1,
+          fields:
+            [
+              { name: "count", widget: "number" },
+              {
+                name: "type",
+                widget: "select",
+                options: ["dvd", "cd", "web", "notreleased"],
+              },
+            ],
+        }
+      - {
           label: "Photos",
           name: "photos",
           widget: "list",
+          max: 20,
+          min: 1,
           summary: "{{fields.image}}",
           fields:
             [
@@ -131,13 +195,6 @@ collections:
                 widget: image,
               },
             ],
-        }
-      - {
-          label: "Title",
-          name: "title",
-          i18n: true,
-          widget: "list",
-          field: { label: "title", name: "title", widget: "string" },
         }
       - {
           label: "Producers",
@@ -190,6 +247,13 @@ collections:
           widget: "list",
           field: { label: "Price", name: "price", widget: "number" },
         }
+      - {
+          label: "Platforms",
+          name: "platforms",
+          multiple: true,
+          widget: "select",
+          options: ["PS1", "PS2", "Windows", "Android", "Xbox 360"],
+        }
       - { label: "Publish Date", name: "publish_date", widget: "datetime" }
       # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
       - {
@@ -205,6 +269,8 @@ collections:
           name: "tgfiles",
           # default: [],
           # i18n: true,
+          max: 60,
+          min: 1,
           widget: "list",
           fields:
             [
@@ -217,12 +283,34 @@ collections:
                 widget: "select",
                 options: ["game", "manual", "extra", "patch", "serial"],
               },
+              {
+                name: "platform",
+                widget: "select",
+                required: false,
+                options: ["PS1", "PS2", "Windows", "Android", "Xbox 360"],
+              },
             ],
         }
       - { label: "files", name: "files", widget: "hidden", default: [] }
       - {
+          label: "Links",
+          name: "links",
+          max: 20,
+          min: 1,
+          # default: [],
+          i18n: true,
+          widget: "list",
+          fields:
+            [
+              { name: "url", widget: "string" },
+              { name: "title", widget: "string" },
+            ],
+        }
+      - {
           label: "Contributors",
           name: "contributors",
+          max: 20,
+          min: 1,
           # default: [],
           # i18n: true,
           widget: "list",
@@ -245,7 +333,7 @@ collections:
               },
             ],
         }
-      - { hint: "دست نزنید", name: "ia_id", widget: "string" }
+      - { hint: "دست نزنید", name: "ia_id", widget: "string", required: false }
 
       # - { label: "blah", name: "blah", widget: "markdown" }
       # - label: "Gallery"

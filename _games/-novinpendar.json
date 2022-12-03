@@ -1,0 +1,31 @@
+{
+  "en": {
+    "selling": false,
+    "release_dates": [],
+    "files": [],
+    "publish_date": "2022-12-02T23:06:18.017Z",
+    "games": [
+      {
+        "title": [
+          "best game at the world"
+        ],
+        "type": "dubbed"
+      }
+    ],
+    "photos": [
+      {
+        "title": "Front Cover",
+        "image": "/images/games/420px-archlinux-vert-dark.svg.png"
+      }
+    ],
+    "producers": [
+      "novinpendar"
+    ],
+    "publishers": [
+      "novinpendar"
+    ]
+  },
+  "fa": {
+    "publish_date": "2022-12-02T23:06:18.083Z"
+  }
+}

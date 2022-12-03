@@ -1,0 +1,45 @@
+{
+  "en": {
+    "photos": [
+      {
+        "title": "Front Cover",
+        "image": "/images/games/420px-archlinux-vert-dark.svg.png"
+      }
+    ],
+    "games": [
+      {
+        "type": "dubbed"
+      }
+    ],
+    "producers": [
+      "wow-1"
+    ],
+    "tgfiles": [
+      {
+        "file_name": "a",
+        "file_id": "a",
+        "file_unique_id": "a",
+        "file_size": -1,
+        "type": "game"
+      }
+    ],
+    "release_dates": [],
+    "selling": false,
+    "publishers": [
+      "novinpendar"
+    ],
+    "files": [],
+    "contributors": [
+      {
+        "username": "muhammad",
+        "contribute": [
+          "game"
+        ]
+      }
+    ],
+    "publish_date": "2022-12-02T23:38:31.647Z"
+  },
+  "fa": {
+    "publish_date": "2022-12-02T23:38:31.723Z"
+  }
+}

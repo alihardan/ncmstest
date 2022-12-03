@@ -1,0 +1,32 @@
+{
+  "en": {
+    "selling": false,
+    "release_dates": [],
+    "files": [],
+    "publish_date": "2022-12-02T23:15:41.700Z",
+    "games": [
+      {
+        "title": [
+          "omg"
+        ],
+        "type": "dubbed"
+      }
+    ],
+    "producers": [
+      "novinpendar"
+    ],
+    "publishers": [
+      "novinpendar"
+    ],
+    "contributors": []
+  },
+  "fa": {
+    "publish_date": "2022-12-02T23:15:41.775Z",
+    "producers": [
+      "novinpendar"
+    ],
+    "publishers": [
+      "novinpendar"
+    ]
+  }
+}
