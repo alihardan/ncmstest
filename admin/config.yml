@@ -81,7 +81,13 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Logo", name: "logo", widget: "image" }
       # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      - { label: "Body", i18n: true, name: "body", widget: "markdown" }
+      - {
+          label: "Body",
+          required: false,
+          i18n: true,
+          name: "body",
+          widget: "markdown",
+        }
   - name: "games"
     editor:
       preview: false
