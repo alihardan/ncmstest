@@ -85,7 +85,7 @@ collections:
   - name: "games"
     editor:
       preview: false
-    summary: "{{fields.games[0].title[0]}}-{{fields.publishers[0]}}"
+    summary: "{{fields.collection_title}}-{{fields.games[0].title[0]}}-{{fields.publishers[0]}}"
     i18n: true
     label: "Games"
     extension: json
