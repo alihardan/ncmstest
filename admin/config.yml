@@ -297,8 +297,7 @@ collections:
       - {
           label: "Links",
           name: "links",
-          max: 20,
-          min: 1,
+          required: false,
           # default: [],
           i18n: true,
           widget: "list",
