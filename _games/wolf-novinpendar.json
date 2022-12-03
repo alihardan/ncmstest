@@ -62,6 +62,20 @@
   },
   "fa": {
     "publish_date": "2022-12-03T01:40:00.597Z",
-    "selling": true
+    "selling": true,
+    "publishers": [
+      "novinpendar"
+    ],
+    "contributors": [
+      {
+        "username": "muhammad",
+        "contribute": [
+          "details"
+        ]
+      }
+    ],
+    "producers": [
+      "novinpendar"
+    ]
   }
 }
