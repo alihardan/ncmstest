@@ -3,6 +3,8 @@ backend:
   # name: git-gateway
   repo: "alihardan/ncmstest"
   branch: main
+  auth_scope: repo # this is needed to fork the private repo
+  open_authoring: true
 
 # local_backend: true
 
