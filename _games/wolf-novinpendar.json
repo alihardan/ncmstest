@@ -46,8 +46,10 @@
     "files": [],
     "contributors": [
       {
-        "username": "muhammad",
+        "username": "alihardan",
         "contribute": [
+          "game",
+          "cover",
           "details"
         ]
       }
